@@ -3,5 +3,6 @@
 <form action="LoginServlet" method="post">
     Nom <input type="text" name="name"><br>
     MDP <input type="password" name="password"><br>
-    <input type="submit" value="login">
+    <input type="submit" name="sub" value="Client">
+    <input type="submit" name="sub" value="Conseiller">
 </form>

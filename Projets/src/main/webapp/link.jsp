@@ -14,5 +14,6 @@
 <% }else{ %>
     <a href="LogoutServlet">Deconnexion</a> |
 <% } %>
-<a href="ProfileServlet">Mon compte</a>
+
+<a href="ProfileServlet">Mon profil</a>
 <hr>
