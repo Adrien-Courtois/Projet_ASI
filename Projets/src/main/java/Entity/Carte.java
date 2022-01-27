@@ -7,20 +7,23 @@ import java.io.Serializable;
 @Table(name="Carte")
 public class Carte implements Serializable {
 
+/*
+    Entité Carte : représente la carte bancaire lié à un compte en banque
+*/
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column( name="IDCarte" )
     private int idCarte;
 
     @Column( name="CodeCarte" )
-    private int codeCarte;
+    private String codeCarte;
 
     public Carte(){
         //Générer un code à 4 chiffres aléatoirement
-        this.codeCarte = (int) (Math.random() * ( 10 - 0 ));
+        this.codeCarte = String.valueOf((int) (Math.random() * ( 10 - 0 )));
         for(int i = 0; i < 3; i++){
-            this.codeCarte *= 10;
-            this.codeCarte = (int) (Math.random() * ( 10 - 0 ));
+            this.codeCarte += String.valueOf((int)(Math.random() * ( 10 - 0 )));
         }
     }
 
@@ -28,7 +31,7 @@ public class Carte implements Serializable {
         return idCarte;
     }
 
-    public int getCodeCarte() {
+    public String getCodeCarte() {
         return codeCarte;
     }
 
@@ -36,7 +39,7 @@ public class Carte implements Serializable {
         this.idCarte = idCarte;
     }
 
-    public void setCodeCarte(int codeCarte) {
+    public void setCodeCarte(String codeCarte) {
         this.codeCarte = codeCarte;
     }
 }

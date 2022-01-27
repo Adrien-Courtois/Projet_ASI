@@ -6,6 +6,11 @@ import javax.persistence.*;
 @Entity
 @Table(name="Client")
 public class Client implements Serializable{
+
+/*
+    Entité Client : représente un client de la banque
+*/
+
     @Id
     @GeneratedValue (strategy=GenerationType.AUTO)
     @Column( name="IDClient" )
@@ -18,12 +23,13 @@ public class Client implements Serializable{
     private String mdpClient;
 
     @Column( name="IDConseiller" )
-    private int idConseiller;
+    private Integer idConseiller;
 
     private static final long serialVersionUID = 1L;
 
     public Client(){}
 
+    //Constructeur avec conseiller
     public Client(String login, String mdp, int conseiller) {
         super();
         this.setLoginClient(login);
@@ -31,11 +37,12 @@ public class Client implements Serializable{
         this.setIdConseiller(conseiller);
     }
 
+    //Constructeur sans conseiller
     public Client(String login, String mdp) {
         super();
         this.setLoginClient(login);
         this.setMdpClient(mdp);
-        this.setIdConseiller(1);
+        this.setIdConseiller(null);
     }
 
     public int getIdClient() {
@@ -50,7 +57,7 @@ public class Client implements Serializable{
         return mdpClient;
     }
 
-    public int getIdConseiller() { return idConseiller; }
+    public Integer getIdConseiller() { return idConseiller; }
 
     public void setIdClient(int idClient) {
         this.idClient = idClient;
@@ -64,7 +71,7 @@ public class Client implements Serializable{
         this.mdpClient = mdpClient;
     }
 
-    public void setIdConseiller(int idConseiller) {
+    public void setIdConseiller(Integer idConseiller) {
         this.idConseiller = idConseiller;
     }
 }

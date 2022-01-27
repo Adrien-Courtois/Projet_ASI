@@ -3,13 +3,17 @@ package Entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
 @Entity
 @Table(name="Transaction")
 public class Transaction implements Serializable {
+
+/*
+    Entité Transaction : représente une transaction d'un compte à un autre
+*/
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column( name="IDTransaction" )

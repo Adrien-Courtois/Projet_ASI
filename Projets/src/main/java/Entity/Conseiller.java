@@ -6,6 +6,11 @@ import javax.persistence.*;
 @Entity
 @Table(name="Conseiller")
 public class Conseiller implements Serializable{
+
+/*
+    Entité Conseiller : représente le conseiller d'un client, il peut avoir plusieurs clients à charge
+*/
+
     @Id
     @GeneratedValue (strategy=GenerationType.AUTO)
     @Column( name="IDConseiller" )

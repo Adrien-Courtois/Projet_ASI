@@ -18,8 +18,7 @@
 </head>
 <body>
     <%@include file="link.jsp"%>
-    <h2>Bonjour <%=request.getSession().getAttribute("name")%><%!
-    %></h2>
+    <h2>Bonjour <%=request.getSession().getAttribute("name")%></h2>
     <p>Voici vos clients</p>
 
     <table>
@@ -44,13 +43,30 @@
                 <td style="border: 1px solid #333"><%=client.getLoginClient()%></td>
             </tr>
         <%}
-    }finally {
-        if ( entityManager != null ) entityManager.close();
-        if ( entityManagerFactory != null ) entityManagerFactory.close();
-    }
 %>
 
         </tbody>
     </table>
+
+<p>Ajouter un client à votre charge :</p>
+    <form action="ModifConseillerClientServlet" method="post">
+<select name="clients">
+    <option value="">Sélectionner un client à ajouter</option>
+    <%
+        clients = entityManager.createQuery("select c from Client c where c.idClient not in (select cl from Client cl where cl.idConseiller = '" + request.getSession().getAttribute("idUser") + "')", Client.class).getResultList();
+            for (Client client : clients) {
+                %>
+                    <option value="<%=client.getIdClient()%>"><%=client.getLoginClient()%></option>
+                <%
+            }
+
+        }finally {
+            if ( entityManager != null ) entityManager.close();
+            if ( entityManagerFactory != null ) entityManagerFactory.close();
+        }
+    %>
+</select>
+<input type="submit" value="ajouter"/>
+</form>
 </body>
 </html>

@@ -19,7 +19,7 @@
     <%@include file="link.jsp"%>
     Bienvenue <%=request.getSession().getAttribute("name")%>
 
-    <p>Voici vos comptes courants</p>
+    <p>Voici vos comptes courants</p><a href="ouvertureDeCompte.jsp?epargne=0"><button>Ouvrir un compte courant</button></a>
 
     <table>
         <thead>
@@ -41,7 +41,7 @@
                 List<Compte> comptes = entityManager.createQuery("select c from Compte c where c.idClient = '" + request.getSession().getAttribute("idUser") + "' and c.plafond = NULL", Compte.class).getResultList();
                 for (Compte compte : comptes) {%>
         <tr>
-            <td style="border: 1px solid #333"><%=compte.getNumCompte()%></td>
+            <td style="border: 1px solid #333"><a href="ViewCompte?compte=<%=compte.getNumCompte()%>"><%=compte.getNumCompte()%></a></td>
             <td style="border: 1px solid #333"><%=compte.getSolde()%></td>
         </tr>
         <%}
@@ -54,7 +54,7 @@
         </tbody>
     </table>
 
-    <p>Voici vos comptes épargnes</p>
+    <p>Voici vos comptes épargnes</p><a href="ouvertureDeCompte.jsp?epargne=1"><button>Ouvrir un compte épargne</button></a>
 
     <table>
         <thead>
@@ -77,7 +77,7 @@
                 List<Compte> comptes = entityManager.createQuery("select c from Compte c where c.idClient = '" + request.getSession().getAttribute("idUser") + "' and c.plafond != NULL", Compte.class).getResultList();
                 for (Compte compte : comptes) {%>
         <tr>
-            <td style="border: 1px solid #333"><%=compte.getNumCompte()%></td>
+            <td style="border: 1px solid #333"><a href="ViewCompte?compte=<%=compte.getNumCompte()%>"><%=compte.getNumCompte()%></a></td>
             <td style="border: 1px solid #333"><%=compte.getSolde()%></td>
             <td style="border: 1px solid #333"><%=compte.getPlafond()%></td>
         </tr>

@@ -6,6 +6,13 @@ import java.io.Serializable;
 @Entity
 @Table(name="Compte")
 public class Compte implements Serializable {
+
+/*
+    Entité Compte : représente un compte bancaire détenu par un client,
+    ce compte peut être un compte courant (sans plafond)
+    ou un compte épargne (avec plafond)
+*/
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column( name="NumCompte" )
@@ -27,6 +34,13 @@ public class Compte implements Serializable {
 
     public Compte(){}
 
+    //Constructeur
+    public Compte(float solde, int idClient, Float plafond){
+        this.solde = solde;
+        this.idClient = idClient;
+        this.plafond = plafond;
+    }
+
     public int getNumCompte() {
         return numCompte;
     }
@@ -39,11 +53,11 @@ public class Compte implements Serializable {
         return idClient;
     }
 
-    public float getPlafond() {
+    public Float getPlafond() {
         return plafond;
     }
 
-    public int getIdCarte() {
+    public Integer getIdCarte() {
         return idCarte;
     }
 

@@ -1,0 +1,8 @@
+#cacheCode{
+    background: #000;
+}
+
+#cacheCode:hover{
+    background: transparent;
+    cursor: none;
+}

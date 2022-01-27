@@ -15,6 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 public class LoginServlet extends HttpServlet {
+
+/*
+    Servlet appelée pour se connecter à sa session grâce à ses login et mot de passe
+*/
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");

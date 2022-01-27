@@ -17,6 +17,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class ProfileServlet extends HttpServlet {
+
+/*
+    Servlet appelée pour rediriger vers le profil (client ou conseiller en fonction de la session ouverte)
+*/
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");

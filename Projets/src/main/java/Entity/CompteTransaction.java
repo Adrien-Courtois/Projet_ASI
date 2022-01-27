@@ -7,10 +7,14 @@ import java.io.Serializable;
 @Table(name="Compte_Transaction")
 public class CompteTransaction implements Serializable {
 
+/*
+    Entité CompteTransaction : représente la table de jointure entre la table Compte et la table Transaction
+*/
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column( name="IDTransaction_NumCommande" )
-    private int idTransactionNumCommande;
+    @Column( name="IDTransaction_NumCompte" )
+    private int idTransactionNumCompte;
 
     @Column( name="IDTransaction" )
     private int idTransaction;
@@ -25,8 +29,8 @@ public class CompteTransaction implements Serializable {
         this.numCompte = numCompte;
     }
 
-    public int getIdTransactionNumCommande() {
-        return idTransactionNumCommande;
+    public int getIdTransactionNumCompte() {
+        return idTransactionNumCompte;
     }
 
     public int getIdTransaction() {
@@ -37,8 +41,8 @@ public class CompteTransaction implements Serializable {
         return numCompte;
     }
 
-    public void setIdTransactionNumCommande(int idTransactionNumCommande) {
-        this.idTransactionNumCommande = idTransactionNumCommande;
+    public void setIdTransactionNumCompte(int idTransactionNumCompte) {
+        this.idTransactionNumCompte = idTransactionNumCompte;
     }
 
     public void setIdTransaction(int idTransaction) {

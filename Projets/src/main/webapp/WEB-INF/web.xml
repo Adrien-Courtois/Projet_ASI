@@ -15,6 +15,7 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
+
   <servlet>
     <description></description>
     <display-name>ProfileServlet</display-name>
@@ -25,6 +26,7 @@
     <servlet-name>ProfileServlet</servlet-name>
     <url-pattern>/ProfileServlet</url-pattern>
   </servlet-mapping>
+
   <servlet>
     <description></description>
     <display-name>LogoutServlet</display-name>
@@ -34,5 +36,49 @@
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>ViewCompteServlet</display-name>
+    <servlet-name>ViewCompteServlet</servlet-name>
+    <servlet-class>ViewCompteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewCompteServlet</servlet-name>
+    <url-pattern>/ViewCompte</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>TransactionServlet</display-name>
+    <servlet-name>TransactionServlet</servlet-name>
+    <servlet-class>TransactionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TransactionServlet</servlet-name>
+    <url-pattern>/Transaction</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>DemandeCarteServlet</display-name>
+    <servlet-name>DemandeCarteServlet</servlet-name>
+    <servlet-class>DemandeCarteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DemandeCarteServlet</servlet-name>
+    <url-pattern>/DemandeCarte</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>CreationCompteServlet</display-name>
+    <servlet-name>CreationCompteServlet</servlet-name>
+    <servlet-class>CreationCompteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreationCompteServlet</servlet-name>
+    <url-pattern>/CreationCompte</url-pattern>
   </servlet-mapping>
 </web-app>
