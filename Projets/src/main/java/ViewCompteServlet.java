@@ -18,7 +18,7 @@ public class ViewCompteServlet extends HttpServlet {
     Servlet appelée pour voir un compte en banque en détail (voir si nous avons les autorisations)
 */
 
-    //méthode appelée lors s'une requête GET
+    //méthode appelée lors d'une requête GET
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 

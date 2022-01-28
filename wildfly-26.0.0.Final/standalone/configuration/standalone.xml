@@ -521,9 +521,4 @@
             <remote-destination host="${jboss.mail.server.host:localhost}" port="${jboss.mail.server.port:25}"/>
         </outbound-socket-binding>
     </socket-binding-group>
-    <deployments>
-        <deployment name="Projet.war" runtime-name="Projet.war">
-            <fs-archive path="/home/adrien/Cours/M1/ASI/Projets/target/Projet.war"/>
-        </deployment>
-    </deployments>
 </server>

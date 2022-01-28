@@ -19,18 +19,29 @@ public class DemandeCarteServlet extends HttpServlet {
     Servlet appelée pour créer une carte et la lié au compte
 */
 
+    //méthode appelée lors d'une requête GET
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        //Réponse de type html
         response.setContentType("text/html");
+
+        //Récupération de la session
         HttpSession session = request.getSession();
+
+        //Récupération de la sortie
         PrintWriter out=response.getWriter();
 
+        //On récupère l'identifiant du compte depuis la variable de session
         int idcompte = (int)session.getAttribute("compte");
 
+        //On initialise l'entity manager
         EntityManagerFactory entityManagerFactory = null;
         EntityManager entityManager = null;
 
         try {
+
+            //On récupère l'entity manager de notre base
             entityManagerFactory = Persistence.createEntityManagerFactory("Clients");
             entityManager = entityManagerFactory.createEntityManager();
 
@@ -51,12 +62,16 @@ public class DemandeCarteServlet extends HttpServlet {
             compte.setIdCarte(carte.getIdCarte());
             entityManager.flush();
 
+            //On applique les changements fait durant la transaction
             trans.commit();
         }finally {
+
+            //On ferme l'entity manager
             if ( entityManager != null ) entityManager.close();
             if ( entityManagerFactory != null ) entityManagerFactory.close();
         }
 
+        //On redirige vers la page du compte
         request.getRequestDispatcher("compte.jsp").forward(request, response);
     }
 }

@@ -6669,3 +6669,28 @@ Stacktrace:
 2022-01-27 16:06:21,598 INFO  [org.hibernate.hql.internal.QueryTranslatorFactoryInitiator] (default task-1) HHH000397: Using ASTQueryTranslatorFactory
 2022-01-27 16:06:21,599 INFO  [stdout] (default task-1) Hibernate: select client0_.IDClient as IDClient1_1_, client0_.IDConseiller as IDConsei2_1_, client0_.LoginClient as LoginCli3_1_, client0_.MDPClient as MDPClien4_1_ from Client client0_ where client0_.IDConseiller='1'
 2022-01-27 16:06:21,604 INFO  [stdout] (default task-1) Hibernate: select client0_.IDClient as IDClient1_1_, client0_.IDConseiller as IDConsei2_1_, client0_.LoginClient as LoginCli3_1_, client0_.MDPClient as MDPClien4_1_ from Client client0_ where client0_.IDClient not in  (select client1_.IDClient from Client client1_ where client1_.IDConseiller='1')
+2022-01-27 16:44:58,887 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0019: Stopped Driver service with driver-name = Projet.war_com.mysql.cj.jdbc.Driver_8_0
+2022-01-27 16:44:58,887 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 435) WFLYUT0022: Unregistered web context: '/Projet' from server 'default-server'
+2022-01-27 16:44:59,031 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 440) WFLYJPA0011: Stopping Persistence Unit (phase 2 of 2) Service 'Projet.war#Clients'
+2022-01-27 16:44:59,031 INFO  [org.hibernate.orm.beans] (ServerService Thread Pool -- 440) HHH10005004: Stopping BeanContainer : org.hibernate.resource.beans.container.internal.CdiBeanContainerExtendedAccessImpl@335409c3
+2022-01-27 16:44:59,032 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 440) WFLYJPA0011: Stopping Persistence Unit (phase 1 of 2) Service 'Projet.war#Clients'
+2022-01-27 16:44:59,073 INFO  [org.infinispan.manager.DefaultCacheManager] (ServerService Thread Pool -- 440) Stopping cache manager null on null
+2022-01-27 16:44:59,421 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) WFLYSRV0028: Stopped deployment Projet.war (runtime-name: Projet.war) in 534ms
+2022-01-27 16:44:59,548 INFO  [org.jboss.as.server] (management-handler-thread - 20) WFLYSRV0009: Undeployed "Projet.war" (runtime-name: "Projet.war")
+2022-01-27 16:44:59,726 INFO  [org.jboss.as.server] (management-handler-thread - 20) WFLYSRV0272: Suspending server
+2022-01-27 16:44:59,747 INFO  [org.jboss.as.ejb3] (management-handler-thread - 20) WFLYEJB0493: Jakarta Enterprise Beans subsystem suspension complete
+2022-01-27 16:44:59,802 INFO  [org.jboss.as.server] (Management Triggered Shutdown) WFLYSRV0241: Shutting down in response to management operation 'shutdown'
+2022-01-27 16:44:59,878 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) WFLYUT0019: Host default-host stopping
+2022-01-27 16:44:59,878 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) WFLYJCA0010: Unbound data source [java:jboss/datasources/testDS]
+2022-01-27 16:44:59,881 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-3) WFLYMAIL0002: Unbound mail session [java:jboss/mail/Default]
+2022-01-27 16:44:59,922 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-8) WFLYJCA0010: Unbound data source [java:jboss/datasources/ExampleDS]
+2022-01-27 16:44:59,962 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) WFLYUT0008: Undertow HTTPS listener https suspending
+2022-01-27 16:44:59,963 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) WFLYUT0007: Undertow HTTPS listener https stopped, was bound to 127.0.0.1:8443
+2022-01-27 16:45:00,008 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) WFLYUT0008: Undertow HTTP listener default suspending
+2022-01-27 16:45:00,009 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) WFLYUT0007: Undertow HTTP listener default stopped, was bound to 127.0.0.1:8080
+2022-01-27 16:45:00,011 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 443) WFLYCLINF0003: Stopped http-remoting-connector cache from ejb container
+2022-01-27 16:45:00,013 INFO  [org.infinispan.manager.DefaultCacheManager] (ServerService Thread Pool -- 443) Stopping cache manager null on null
+2022-01-27 16:45:00,017 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) WFLYJCA0019: Stopped Driver service with driver-name = h2
+2022-01-27 16:45:00,027 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) WFLYJCA0019: Stopped Driver service with driver-name = mysql
+2022-01-27 16:45:00,033 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-5) WFLYUT0004: Undertow 2.2.14.Final stopping
+2022-01-27 16:45:00,062 INFO  [org.jboss.as] (MSC service thread 1-1) WFLYSRV0050: WildFly Full 26.0.0.Final (WildFly Core 18.0.0.Final) stopped in 226ms
