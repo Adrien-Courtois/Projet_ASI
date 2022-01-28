@@ -1,6 +1,9 @@
 package Entity;
 
+import com.google.common.hash.Hashing;
+
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import javax.persistence.*;
 
 @Entity
@@ -33,7 +36,7 @@ public class Client implements Serializable{
     public Client(String login, String mdp, int conseiller) {
         super();
         this.setLoginClient(login);
-        this.setMdpClient(mdp);
+        this.setMdpClient(Hashing.sha256().hashString(mdp, StandardCharsets.UTF_8).toString());
         this.setIdConseiller(conseiller);
     }
 
@@ -41,7 +44,7 @@ public class Client implements Serializable{
     public Client(String login, String mdp) {
         super();
         this.setLoginClient(login);
-        this.setMdpClient(mdp);
+        this.setMdpClient(Hashing.sha256().hashString(mdp, StandardCharsets.UTF_8).toString());
         this.setIdConseiller(null);
     }
 

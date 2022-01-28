@@ -81,4 +81,37 @@
     <servlet-name>CreationCompteServlet</servlet-name>
     <url-pattern>/CreationCompte</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+  <description></description>
+  <display-name>ModifConseillerClientServlet</display-name>
+  <servlet-name>ModifConseillerClientServlet</servlet-name>
+  <servlet-class>ModifConseillerClientServlet</servlet-class>
+</servlet>
+  <servlet-mapping>
+    <servlet-name>ModifConseillerClientServlet</servlet-name>
+    <url-pattern>/ModifConseillerClient</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>ChangerMDPServlet</display-name>
+    <servlet-name>ChangerMDPServlet</servlet-name>
+    <servlet-class>ChangerMDPServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangerMDPServlet</servlet-name>
+    <url-pattern>/ChangerMDP</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>AjouterClientServlet</display-name>
+    <servlet-name>AjouterClientServlet</servlet-name>
+    <servlet-class>AjouterClientServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjouterClientServlet</servlet-name>
+    <url-pattern>/AjouterClient</url-pattern>
+  </servlet-mapping>
 </web-app>

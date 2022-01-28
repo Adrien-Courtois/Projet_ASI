@@ -19,6 +19,8 @@
     <%@include file="link.jsp"%>
     Bienvenue <%=request.getSession().getAttribute("name")%>
 
+    <a href="changementDeMDP.jsp"><button>Changer de mot de passe</button></a>
+
     <p>Voici vos comptes courants</p><a href="ouvertureDeCompte.jsp?epargne=0"><button>Ouvrir un compte courant</button></a>
 
     <table>

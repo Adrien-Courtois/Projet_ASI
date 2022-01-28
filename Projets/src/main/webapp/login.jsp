@@ -6,3 +6,4 @@
     <input type="submit" name="sub" value="Client">
     <input type="submit" name="sub" value="Conseiller">
 </form>
+<a href="ajouterClient.jsp"><button>Inscription</button></a>

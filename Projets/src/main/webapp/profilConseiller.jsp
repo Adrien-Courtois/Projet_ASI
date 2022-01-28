@@ -20,6 +20,8 @@
     <%@include file="link.jsp"%>
     <h2>Bonjour <%=request.getSession().getAttribute("name")%></h2>
     <p>Voici vos clients</p>
+    <a href="changementDeMDP.jsp"><button>Changer de mot de passe</button></a>
+    <a href="ajouterClient.jsp"><button>Ajouter un client</button></a>
 
     <table>
         <thead>
@@ -49,9 +51,9 @@
     </table>
 
 <p>Ajouter un client à votre charge :</p>
-    <form action="ModifConseillerClientServlet" method="post">
+    <form action="ModifConseillerClient" method="post">
 <select name="clients">
-    <option value="">Sélectionner un client à ajouter</option>
+    <option value="0">Sélectionner un client à ajouter</option>
     <%
         clients = entityManager.createQuery("select c from Client c where c.idClient not in (select cl from Client cl where cl.idConseiller = '" + request.getSession().getAttribute("idUser") + "')", Client.class).getResultList();
             for (Client client : clients) {
