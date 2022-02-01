@@ -53,8 +53,8 @@
         <table>
             <thead>
                 <tr>
-                    <th style="border: 1px solid #333">Montant transaction</th>
-                    <th style="border: 1px solid #333">date</th>
+                    <th>Montant transaction</th>
+                    <th>date</th>
                 </tr>
             </thead>
             <tbody>
@@ -64,14 +64,14 @@
                 if(transaction.getNumCompteExp() == compte.getNumCompte()){
                     %>
                     <tr>
-                        <td style="border: 1px solid #333; background: red; color: #fff"><%=transaction.getMontant()%></td>
+                        <td style="border: 1px solid #333; background: red; color: #fff">-<%=transaction.getMontant()%></td>
                         <td style="border: 1px solid #333; background: red; color: #fff"><%=transaction.getDate()%></td>
                     </tr>
                     <%
                 }else{
                     %>
                     <tr>
-                        <td style="border: 1px solid #333; background: green; color: #fff"><%=transaction.getMontant()%></td>
+                        <td style="border: 1px solid #333; background: green; color: #fff">+<%=transaction.getMontant()%></td>
                         <td style="border: 1px solid #333; background: green; color: #fff"><%=transaction.getDate()%></td>
                     </tr>
                     <%
@@ -90,7 +90,7 @@
             <input type="text" name="compteDest" placeholder="Numéro de compte du destinataire"/>
             <input type="hidden" name="compteExp" value="<%=compte.getNumCompte()%>"/>
             <input type="number" name="montant" placeholder="Montant"/>
-            <input type="submit" value="Effectuer le virement"/>
+            <input class="button" type="submit" value="Effectuer le virement"/>
         </form>
 
     <%

@@ -114,4 +114,15 @@
     <servlet-name>AjouterClientServlet</servlet-name>
     <url-pattern>/AjouterClient</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>ViewClientServlet</display-name>
+    <servlet-name>ViewClientServlet</servlet-name>
+    <servlet-class>ViewClientServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewClientServlet</servlet-name>
+    <url-pattern>/ViewClient</url-pattern>
+  </servlet-mapping>
 </web-app>

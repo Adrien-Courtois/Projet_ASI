@@ -9,12 +9,13 @@
 <html>
 <head>
     <title>Changement de mot de passe</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <form method="post" action="ChangerMDP">
         <input type="password" name="mdpActuel" placeholder="Mot de passe actuel"/>
         <input type="password" name="newMDP" placeholder="Nouveau mot de passe"/>
-        <input type="submit" value="Valider"/>
+        <input class="button" type="submit" value="Valider"/>
     </form>
 </body>
 </html>

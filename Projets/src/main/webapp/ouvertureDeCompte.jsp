@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Ouverture de compte</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <%@include file="link.jsp"%>
@@ -26,7 +27,7 @@
                 %>style="display: none"<%
             }
         %>/>
-        <input type="submit" value="Créer le compte"/>
+        <input class="button" type="submit" value="Créer le compte"/>
         <script>
             document.getElementById("epargne").addEventListener('click', () =>{
                 if(document.getElementById("epargne").checked == true){

@@ -9,12 +9,13 @@
 <html>
 <head>
     <title>Ajouter un client</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <form method="post" action="AjouterClient">
         <input type="text" name="login" placeholder="Login du client"/>
         <input type="password" name="mdp" placeholder="Mot de passe du client"/>
-        <input type="submit" value="Enregistrer"/>
+        <input class="button" type="submit" value="Enregistrer"/>
     </form>
 </body>
 </html>

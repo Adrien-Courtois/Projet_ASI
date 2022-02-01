@@ -15,6 +15,7 @@
 <html>
 <head>
     <title>Profil Conseiller</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <%@include file="link.jsp"%>
@@ -26,7 +27,7 @@
     <table>
         <thead>
             <tr>
-                <th style="border: 1px solid #333">Nom du client</th>
+                <th>Nom du client</th>
             </tr>
         </thead>
         <tbody>
@@ -42,7 +43,7 @@
         List<Client> clients = entityManager.createQuery("select c from Client c where c.idConseiller = '" + request.getSession().getAttribute("idUser") + "'", Client.class).getResultList();
         for (Client client : clients) {%>
             <tr>
-                <td style="border: 1px solid #333"><%=client.getLoginClient()%></td>
+                <td><a href="ViewClient?client=<%=client.getIdClient()%>"><%=client.getLoginClient()%></a></td>
             </tr>
         <%}
 %>
@@ -68,7 +69,7 @@
         }
     %>
 </select>
-<input type="submit" value="ajouter"/>
+<input class="button" type="submit" value="ajouter"/>
 </form>
 </body>
 </html>

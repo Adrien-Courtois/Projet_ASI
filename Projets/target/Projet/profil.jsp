@@ -14,6 +14,7 @@
 <html>
 <head>
     <title>Profil Client</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <%@include file="link.jsp"%>
@@ -26,8 +27,8 @@
     <table>
         <thead>
         <tr>
-            <th style="border: 1px solid #333">Numéro de compte</th>
-            <th style="border: 1px solid #333">Solde</th>
+            <th>Numéro de compte</th>
+            <th>Solde</th>
         </tr>
         </thead>
         <tbody>
@@ -43,8 +44,8 @@
                 List<Compte> comptes = entityManager.createQuery("select c from Compte c where c.idClient = '" + request.getSession().getAttribute("idUser") + "' and c.plafond = NULL", Compte.class).getResultList();
                 for (Compte compte : comptes) {%>
         <tr>
-            <td style="border: 1px solid #333"><a href="ViewCompte?compte=<%=compte.getNumCompte()%>"><%=compte.getNumCompte()%></a></td>
-            <td style="border: 1px solid #333"><%=compte.getSolde()%></td>
+            <td><a href="ViewCompte?compte=<%=compte.getNumCompte()%>"><%=compte.getNumCompte()%></a></td>
+            <td><%=compte.getSolde()%></td>
         </tr>
         <%}
         }finally {
@@ -61,9 +62,9 @@
     <table>
         <thead>
         <tr>
-            <th style="border: 1px solid #333">Numéro de compte</th>
-            <th style="border: 1px solid #333">Solde</th>
-            <th style="border: 1px solid #333">Plafond</th>
+            <th>Numéro de compte</th>
+            <th>Solde</th>
+            <th>Plafond</th>
         </tr>
         </thead>
         <tbody>
@@ -79,9 +80,9 @@
                 List<Compte> comptes = entityManager.createQuery("select c from Compte c where c.idClient = '" + request.getSession().getAttribute("idUser") + "' and c.plafond != NULL", Compte.class).getResultList();
                 for (Compte compte : comptes) {%>
         <tr>
-            <td style="border: 1px solid #333"><a href="ViewCompte?compte=<%=compte.getNumCompte()%>"><%=compte.getNumCompte()%></a></td>
-            <td style="border: 1px solid #333"><%=compte.getSolde()%></td>
-            <td style="border: 1px solid #333"><%=compte.getPlafond()%></td>
+            <td><a href="ViewCompte?compte=<%=compte.getNumCompte()%>"><%=compte.getNumCompte()%></a></td>
+            <td><%=compte.getSolde()%></td>
+            <td><%=compte.getPlafond()%></td>
         </tr>
         <%}
         }finally {

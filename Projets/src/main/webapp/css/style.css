@@ -6,3 +6,27 @@
     background: transparent;
     cursor: none;
 }
+
+th{
+    border: 1px solid #333;
+    background: #333;
+    color: #fff;
+    padding: 5px 15px;
+}
+
+td{
+    border: 1px solid #333;
+}
+
+button, .button{
+    background: #333333;
+    border: none;
+    padding: 5px 15px;
+    color: #ffffff;
+    transition: opacity 250ms ease;
+    border-radius: 8px;
+}
+
+button:hover, .button:hover{
+    opacity: 0.8;
+}
