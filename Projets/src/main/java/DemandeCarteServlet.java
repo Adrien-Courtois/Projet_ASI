@@ -1,11 +1,14 @@
 import Entity.Carte;
+import Entity.CarteManagerRemote;
 import Entity.Compte;
+import Entity.CompteManagerRemote;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+@WebServlet("/DemandeCarte")
 public class DemandeCarteServlet extends HttpServlet {
 
 /*
@@ -35,41 +39,18 @@ public class DemandeCarteServlet extends HttpServlet {
         //On récupère l'identifiant du compte depuis la variable de session
         int idcompte = (int)session.getAttribute("compte");
 
-        //On initialise l'entity manager
-        EntityManagerFactory entityManagerFactory = null;
-        EntityManager entityManager = null;
+        //On récupère le conseiller manager
+        CompteManagerRemote compteManagerRemote = EjbLocator.getLocator().getCompteManager();
 
-        try {
+        //On récupère les informations du compte
+        Compte compte = compteManagerRemote.getCompte(idcompte);
 
-            //On récupère l'entity manager de notre base
-            entityManagerFactory = Persistence.createEntityManagerFactory("Clients");
-            entityManager = entityManagerFactory.createEntityManager();
+        //On récupère le carte manager
+        CarteManagerRemote carteManagerRemote = EjbLocator.getLocator().getCarteManager();
 
-            //On récupère les informations du compte
-            Compte compte = entityManager.createQuery("select c from Compte c where c.numCompte = '" + idcompte + "'", Compte.class).getSingleResult();
+        Carte carte = carteManagerRemote.ajouterCarte();
 
-            //On débute une nouvelle transaction
-            EntityTransaction trans = entityManager.getTransaction();
-            trans.begin();
-
-            //On créer la carte
-            Carte carte = new Carte();
-
-            //On l'enregistre dans la bdd
-            entityManager.persist(carte);
-
-            //On lie la carte au compte
-            compte.setIdCarte(carte.getIdCarte());
-            entityManager.flush();
-
-            //On applique les changements fait durant la transaction
-            trans.commit();
-        }finally {
-
-            //On ferme l'entity manager
-            if ( entityManager != null ) entityManager.close();
-            if ( entityManagerFactory != null ) entityManagerFactory.close();
-        }
+        compte = compteManagerRemote.setCarte(carte, compte);
 
         //On redirige vers la page du compte
         request.getRequestDispatcher("compte.jsp").forward(request, response);

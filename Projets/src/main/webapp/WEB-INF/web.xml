@@ -5,7 +5,7 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
-  <servlet>
+  <!--<servlet>
     <description></description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
@@ -124,5 +124,5 @@
   <servlet-mapping>
     <servlet-name>ViewClientServlet</servlet-name>
     <url-pattern>/ViewClient</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping>-->
 </web-app>

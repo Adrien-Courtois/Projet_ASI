@@ -1,11 +1,15 @@
 
+import Entity.Carte;
+import Entity.CarteManagerRemote;
 import Entity.Client;
+import Entity.ClientManagerRemote;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +17,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
+@WebServlet("/ModifConseillerClient")
 public class ModifConseillerClientServlet extends HttpServlet {
 
 /*
@@ -41,43 +47,15 @@ public class ModifConseillerClientServlet extends HttpServlet {
             out.print("Veuillez sélectionner un client avant d'appuyer sur le bouton");
         }else{
 
-            //On initialise l'entity manager
-            EntityManagerFactory entityManagerFactory = null;
-            EntityManager entityManager = null;
-            try {
+            //On récupère le client manager
+            ClientManagerRemote clientManagerRemote = EjbLocator.getLocator().getClientManager();
 
-                //On récupère l'entity manager de notre base
-                entityManagerFactory = Persistence.createEntityManagerFactory("Clients");
-                entityManager = entityManagerFactory.createEntityManager();
+            Client client = clientManagerRemote.getClient(idClient);
 
-                //On commence une transaction
-                EntityTransaction trans = entityManager.getTransaction();
-                trans.begin();
+            client = clientManagerRemote.setConseiller(client, (int)session.getAttribute("idUser"));
 
-                //On récupère le client qu'on a sélectionné dans le formulaire
-                Client client = entityManager.createQuery("select c from Client c where c.idClient = '" + idClient + "'", Client.class).getSingleResult();
-
-                //On lui modifie le conseiller qui lui est associé
-                client.setIdConseiller((int)session.getAttribute("idUser"));
-
-                //On applique les changements fais aux entités
-                entityManager.flush();
-
-                //On applique les changements fais durant la transaction
-                trans.commit();
-
-                //On ferme l'entity manager
-                entityManager.close();
-                entityManagerFactory.close();
-
-                //On redirige vers le profil du conseiller
-                request.getRequestDispatcher("profilConseiller.jsp").forward(request, response);
-            }finally {
-
-                //On ferme l'entity manager
-                if ( entityManager != null ) entityManager.close();
-                if ( entityManagerFactory != null ) entityManagerFactory.close();
-            }
+            //On redirige vers le profil du conseiller
+            request.getRequestDispatcher("profilConseiller.jsp").forward(request, response);
         }
     }
 }

@@ -1,6 +1,6 @@
 <%@include file="link.jsp"%>
 
-<form action="LoginServlet" method="post">
+<form action="Login" method="post">
     Nom <input type="text" name="name"><br>
     MDP <input type="password" name="password"><br>
     <input class="button" type="submit" name="sub" value="Client">

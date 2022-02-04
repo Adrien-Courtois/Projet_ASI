@@ -12,8 +12,8 @@
 <%if(request.getSession().getAttribute("name") == null){ %>
     <a href="login.jsp">Connexion</a> |
 <% }else{ %>
-    <a href="LogoutServlet">Deconnexion</a> |
+    <a href="Logout">Deconnexion</a> |
 <% } %>
 
-<a href="ProfileServlet">Mon profil</a>
+<a href="Profile">Mon profil</a>
 <hr>

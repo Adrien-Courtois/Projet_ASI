@@ -1,10 +1,14 @@
 import Entity.Compte;
+import Entity.CompteManagerRemote;
+import Entity.Conseiller;
+import Entity.ConseillerManagerRemote;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+@WebServlet("/CreationCompte")
 public class CreationCompteServlet extends HttpServlet {
 
 /*
@@ -49,64 +54,19 @@ public class CreationCompteServlet extends HttpServlet {
             plafond = Float.parseFloat(request.getParameter("plafond"));
         }
 
-        //On initialise l'entity manager
-        EntityManagerFactory entityManagerFactory = null;
-        EntityManager entityManager = null;
+        //On récupère le conseiller manager
+        CompteManagerRemote compteManagerRemote = EjbLocator.getLocator().getCompteManager();
 
-        try {
+        //On modifie le mot de passe du conseiller
+        Compte compte = compteManagerRemote.ajouterCompte(epargne, (float)solde, plafond, (int)session.getAttribute("idUser"));
 
-            //On récupère l'entity manager de notre base
-            entityManagerFactory = Persistence.createEntityManagerFactory("Clients");
-            entityManager = entityManagerFactory.createEntityManager();
-
-            //On commence une transaction
-            EntityTransaction trans = entityManager.getTransaction();
-            trans.begin();
-
-            //On initialise la variable compte
-            Compte compte = null;
-
-            //On regarde si le client veut créer un compte épargne ou non
-            if (epargne == 1){
-
-                //Si c'est un compte épargne alors on vérifie que le plafond n'est pas inférieur au solde et qu'il soit supérieur à 0
-                if(plafond > 0 && solde < plafond) {
-
-                    //Si tout est bon alors nous créons le compte
-                    compte = new Compte(solde, (int) session.getAttribute("idUser"), plafond);
-                }else{
-
-                    //Sinon on affiche un message d'erreur
-                    out.print("Montant du plafond invalide");
-                }
-            }else{
-
-                //Si ce n'est pas un compte épargne alors on peut directement créer le comtpe en banque sans plafond
-                compte = new Compte(solde, (int)session.getAttribute("idUser"), null);
-            }
-
-            //On vérifie que le compte a était créer avant de l'enregistrer
-            if(compte != null) {
-
-                //On enregistre le compte dans la base de donnée
-                entityManager.persist(compte);
-            }
-
-            //On applique la transaction
-            trans.commit();
-
-            //On ferme l'entity manager
-            entityManager.close();
-            entityManagerFactory.close();
+        if(compte != null){
 
             //On redirige vers le profil du client
             request.getRequestDispatcher("profil.jsp").forward(request, response);
+        }else {
 
-        }finally {
-
-            //On ferme l'entity manager
-            if ( entityManager != null ) entityManager.close();
-            if ( entityManagerFactory != null ) entityManagerFactory.close();
+            out.print("Erreur dans les entrées du formulaire");
         }
     }
 }
